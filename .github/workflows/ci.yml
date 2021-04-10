@@ -1,0 +1,41 @@
+name: CI
+
+on:
+    push:
+        branches: [master]
+    pull_request:
+        branches: [master, feature/*]
+
+jobs:
+    build:
+        name: VS 2017 (with CodeCommit v16 disabled)
+        runs-on: windows-2016
+        env:
+            TEST_REPORT_HTML: TestResults/toolkit-test-results.html
+
+        steps:
+            - uses: actions/checkout@v2
+            - name: Add msbuild to PATH
+              uses: microsoft/setup-msbuild@v1.0.2
+              with:
+                  vs-version: "[15.0,16.0)"
+
+            - name: My Test
+              run: dir env:
+
+    build-vs2019:
+        name: VS 2019
+        runs-on: windows-2019
+        env:
+            TEST_REPORT_HTML: TestResults/toolkit-test-results.html
+
+        steps:
+            - uses: actions/checkout@v2
+            - name: Add msbuild to PATH
+              uses: microsoft/setup-msbuild@v1.0.2
+              with:
+                  vs-version: "[16.0,17.0)"
+
+            - name: My Test
+              run: dir env:
+
