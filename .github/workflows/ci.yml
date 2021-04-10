@@ -21,7 +21,7 @@ jobs:
                   vs-version: "[15.0,16.0)"
 
             - name: MyTest
-              run: "dir env:"
+              run: "dir env: | Format-Table -Wrap -AutoSize"
 
     build-vs2019:
         name: VS 2019
@@ -37,4 +37,4 @@ jobs:
                   vs-version: "[16.0,17.0)"
 
             - name: MyTest
-              run: "dir env:"
+              run: "dir env: | Format-Table -Wrap -AutoSize"
